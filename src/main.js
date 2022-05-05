@@ -213,10 +213,15 @@
     createFigureCaption.innerText = `${value.fruit}`;
     createFigureTag.append(createImgTag);
     createFigureTag.append(createFigureCaption);
+
     if (value.type === "Apple") {
       document.getElementById("apples").append(createFigureTag);
     } else if (value.type === "Orange") {
       document.getElementById("oranges").append(createFigureTag);
     }
   }
+  var result = fruits.map((obj) =>
+    Object.assign(obj, { ID: fruits.indexOf(obj) })
+  );
+  console.log(result);
 })();
