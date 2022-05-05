@@ -202,26 +202,26 @@
     },
   ];
 
-  for (value of fruits) {
-    const createImgTag = document.createElement("img");
-    const createFigureTag = document.createElement("figure");
-    const createFigureCaption = document.createElement("figcaption");
-    createImgTag.src = value.src;
-    createImgTag.width = value.width;
-    createImgTag.height = value.height;
-    createImgTag.alt = value.alt;
-    createFigureCaption.innerText = `${value.fruit}`;
-    createFigureTag.append(createImgTag);
-    createFigureTag.append(createFigureCaption);
+  let type2id = {
+    Apple: "apples",
+    Orange: "oranges",
+  };
+  // type2id["Orange"] = undefined;
 
-    if (value.type === "Apple") {
-      document.getElementById("apples").append(createFigureTag);
-    } else if (value.type === "Orange") {
-      document.getElementById("oranges").append(createFigureTag);
+  for (value of fruits) {
+    let id = type2id[value.type];
+    if (id !== undefined) {
+      const createImgTag = document.createElement("img");
+      createImgTag.src = value.src;
+      createImgTag.width = value.width;
+      createImgTag.height = value.height;
+      createImgTag.alt = value.alt;
+      const createFigureCaption = document.createElement("figcaption");
+      createFigureCaption.innerText = `${value.fruit}`;
+      const createFigureTag = document.createElement("figure");
+      createFigureTag.append(createImgTag);
+      createFigureTag.append(createFigureCaption);
+      document.getElementById(id).append(createFigureTag);
     }
   }
-  var result = fruits.map((obj) =>
-    Object.assign(obj, { ID: fruits.indexOf(obj) })
-  );
-  console.log(result);
 })();
