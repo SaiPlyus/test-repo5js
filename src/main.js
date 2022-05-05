@@ -211,15 +211,12 @@
     createImgTag.height = value.height;
     createImgTag.alt = value.alt;
     createFigureCaption.innerText = `${value.fruit}`;
-
+    createFigureTag.append(createImgTag);
+    createFigureTag.append(createFigureCaption);
     if (value.type === "Apple") {
       document.getElementById("apples").append(createFigureTag);
-      createFigureTag.append(createImgTag);
-      createFigureTag.append(createFigureCaption);
     } else if (value.type === "Orange") {
       document.getElementById("oranges").append(createFigureTag);
-      createFigureTag.append(createImgTag);
-      createFigureTag.append(createFigureCaption);
     }
   }
 })();
